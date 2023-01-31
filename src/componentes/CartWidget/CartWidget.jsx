@@ -5,10 +5,17 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 
 function CartWidget(){
     let count =0
+    const styles={
+      color:'turquoise',
+      fontSize: 20,
+    }
+    const styleL={
+      fontSize:15
+    }
   return (
-    <section className='widget'>
+    <section className='widget' style={styles}>
         <HiOutlineShoppingBag/>
-        <lavel>{count}</lavel>
+        <lavel style={styleL}>{count}</lavel>
     </section>
   )
 }

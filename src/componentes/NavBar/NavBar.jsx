@@ -29,7 +29,7 @@ function NavBar(){
       <CartWidget/>
       <ion-icon name="bag-outline"></ion-icon>
       </section>
-      <a className="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="#">LogIn</a>
+      <a className="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3 posita" href="#">LogIn</a>
       </div>
     </nav>
   
