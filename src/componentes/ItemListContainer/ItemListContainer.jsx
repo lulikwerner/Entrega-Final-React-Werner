@@ -6,12 +6,14 @@ const ItemListContainer = ({Greeting}) => {
     const styles={
       color:'turquoise',
       fontSize: 50,
+     
     }
     
 
   return (
     <section style={styles}>
     <div>{Greeting}</div>
+
     </section>
   )
 }
