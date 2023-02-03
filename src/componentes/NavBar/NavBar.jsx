@@ -2,46 +2,47 @@ import CartWidget from "../CartWidget/CartWidget"
 import'../NavBar/NavBar.css'
 import 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Container from 'react-bootstrap/Container';
 
 function NavBar(){
     return(
-<nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top App">
-  <div className="container-fluid">
-    <a className="navbar-brand" href="#">Mia Jewelers</a>
-    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
-    </button>
-    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-        <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="#">Servicios</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">Relojes</a>
-        </li>
-        <li className="nav-item dropdown">
-          <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Joyas
-          </a>
-          <ul className="dropdown-menu">
-            <li><a className="dropdown-item" href="#">Pulseras</a></li>
-            <li><a className="dropdown-item" href="#">Anillos</a></li>
-            <li><a className="dropdown-item" href="#">Collares</a></li>
-          </ul>
-        </li>
-      </ul>
-     
-      <section className='posit d-flex'>
+
+      <Navbar bg="light" expand="lg" className='fixed-top'>
+      <Container fluid>
+        <Navbar.Brand href="#">Mia Jewelers</Navbar.Brand>
+        <Navbar.Toggle aria-controls="navbarScroll" />
+        <Navbar.Collapse id="navbarScroll">
+          <Nav
+            className="me-auto my-2 my-lg-0"
+            style={{ maxHeight: '100px' }}
+            navbarScroll
+          >
+            <Nav.Link href="#action1">Servicios</Nav.Link>
+            <Nav.Link href="#action2">Relojes</Nav.Link>
+            <NavDropdown title="Joyas" id="navbarScrollingDropdown">
+              <NavDropdown.Item href="#action3">Anillos</NavDropdown.Item>
+              <NavDropdown.Item href="#action4">
+                Collares
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action5">
+               Pulseras
+              </NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+        
+          <section className='posit d-flex'>
       <CartWidget/>
       <ion-icon name="bag-outline"></ion-icon>
       </section>
       <a className="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3 posita" href="#">LogIn</a>
-      </div>
-    
-   
-  </div>
-</nav>
-        
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+
+
 
 
 
