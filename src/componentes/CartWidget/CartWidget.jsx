@@ -15,7 +15,7 @@ function CartWidget(){
   return (
     <section className='widget' style={styles}>
         <HiOutlineShoppingBag/>
-        <lavel style={styleL}>{count}</lavel>
+        <label style={styleL}>{count}</label>
     </section>
   )
 }

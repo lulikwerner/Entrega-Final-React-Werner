@@ -1,7 +1,5 @@
 import CartWidget from "../CartWidget/CartWidget"
 import'../NavBar/NavBar.css'
-import 'react-bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -29,6 +27,9 @@ function NavBar(){
               </NavDropdown.Item>
               <NavDropdown.Item href="#action5">
                Pulseras
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action6">
+               Aretes
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
