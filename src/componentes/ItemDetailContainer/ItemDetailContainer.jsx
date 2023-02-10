@@ -9,7 +9,8 @@ import ItemDetail from '../../componentes/ItemDetail/ItemDetail';
 const ItemDetailContainer = ({filterProduct}) => {
     const [itemDet, setItemDetail] = useState({});
     const [loading, setLoading] = useState(true);
-   
+    const { id, category, brand, model, price, quantity, description, image } =
+    itemDet;
     useEffect(() => {
       getProduct(id)
         .then(( item) => setItemDetail(item))
