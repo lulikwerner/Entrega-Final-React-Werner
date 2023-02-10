@@ -20,3 +20,12 @@ export const gFetch = () => new Promise( (res,rej)=>{
       }
     })
 
+    export const getProduct = (id) => {
+      return new Promise((resolve) => {
+        const filterProduct = Products.find(item => item.id === parseInt(id))
+        setTimeout(() => {
+            resolve(filterProduct)
+         
+        }, 2000)
+    })
+  }

@@ -8,8 +8,6 @@ import ItemDetailContainer from './componentes/ItemDetailContainer/ItemDetailCon
 
 
 function App() {
-//onAdd
-
   return (
    <>
  <NavBar/>

@@ -1,23 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { Spinner } from 'react-bootstrap';
-import { gFetch } from '../../utils/gFetch';
+import { gFetch, getProduct } from '../../utils/gFetch';
 import ItemDetail from '../../componentes/ItemDetail/ItemDetail';
 
 
 
 
-const ItemDetailContainer = () => {
+const ItemDetailContainer = ({filterProduct}) => {
     const [itemDet, setItemDetail] = useState({});
     const [loading, setLoading] = useState(true);
-  
-    console.log(itemDet)
+   
     useEffect(() => {
-      gFetch()
-        .then((Products) => setItemDetail(Products.find((item) => item.id === '3')))
+      getProduct(id)
+        .then(( item) => setItemDetail(item))
         .catch((error) => console.log(error))
         .finally(() => setLoading(false));
-    }, []);
-  
+    }, [id]);
     return (
       <div>
         {loading ? <Spinner /> : <ItemDetail itemDet={itemDet}/>  }
