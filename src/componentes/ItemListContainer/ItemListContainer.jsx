@@ -14,15 +14,24 @@ export const ItemListContainer = ({ Greeting }) => {
     fontSize: 50,
     marginTop:'8%',
   };
-  const idCategoria  = useParams()
+  
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] =useState(true)
+  const [loading, setLoading] =useState(true);
+  const {idCategoria}  = useParams();
   useEffect(() => {
-    gFetch()
+    if(idCategoria){
+      gFetch()
+      .then((resp) => setProducts(resp.filter(Products => Products.category ===idCategoria)))
+      .catch((err) => console.log(err))
+      .finally(() => setLoading(false));
+    }else{
+      gFetch()
       .then((resp) => setProducts(resp))
       .catch((err) => console.log(err))
       .finally(() => setLoading(false));
-  }, []);
+    }
+  },[idCategoria]);
+  
 
 console.log(products)
 console.log(idCategoria)

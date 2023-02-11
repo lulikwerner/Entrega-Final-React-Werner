@@ -12,7 +12,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path='/' element = {<ItemListContainer Greeting="Bienvenido a la Nueva tienda Online" />}/>
-        <Route path='categoria/:idCategoria/:idSubCategoria' element = {<ItemListContainer Greeting="Bienvenido a la Nueva tienda Online" />}/>
+        <Route path='categoria/:idCategoria' element = {<ItemListContainer Greeting="Bienvenido a la Nueva tienda Online" />}/>
         <Route path='detalle/:idProduct' element = {<ItemDetailContainer/>}/>
         <Route path ='*' element = {<Navigate to = '/'/>}/>
         <Route/>

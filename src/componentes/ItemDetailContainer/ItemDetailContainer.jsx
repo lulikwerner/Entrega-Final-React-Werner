@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Spinner } from 'react-bootstrap';
-import { gFetch, getProduct } from '../../utils/gFetch';
+import { gFetch} from '../../utils/gFetch';
 import ItemDetail from '../../componentes/ItemDetail/ItemDetail';
 import { useParams } from 'react-router-dom';
 
@@ -10,7 +10,6 @@ const ItemDetailContainer = () => {
   const [itemDet, setItemDetail] = useState({});
   const [loading, setLoading] = useState(true);
   
-  console.log(itemDet)
   useEffect(() => {
     gFetch()
       .then((Products) => setItemDetail(Products.find((item) => item.id === idProduct)))

@@ -6,17 +6,23 @@ function Item({ prod }) {
   const {id, category, brand, model, price, quantity, image } =
     prod;
   const styles = {
-    width: "18rem",
-    marginTop: "10%",
+    width: '18rem',
+    marginTop: '10%',
     marginLeft:'5%',
-    display: "inline-block",
-    flexDirection: "row",
-    flexWrap: "wrap",
- 
+    display: 'inline-block',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    height:'21 rem',
+    padding: '9px 20px 9px 20px',
   };
+  const styleI ={
+      width:' 16rem',
+      height:'15rem'
+      
+  }
   return (
     <Card style={styles} >
-      <Card.Img variant="top" src={prod.image} />
+      <Card.Img variant="top" style = {styleI}src={prod.image} />
       <Card.Body>
         <Card.Title>{model}</Card.Title>
         <Card.Subtitle>{brand}</Card.Subtitle>

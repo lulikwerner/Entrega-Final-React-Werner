@@ -19,32 +19,32 @@ function NavBar(){
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
+          
             
-            
-            <NavLink to = 'categoria/relojes'>Relojes</NavLink>
+            <Link className={({isActive})=> isActive ?  'btn btn-primary' : 'btn btn-outline-primary'} to = 'categoria/Relojes' >Relojes</Link>
 
             <NavDropdown title="Joyas" id="navbarScrollingDropdown">
             
               <NavDropdown.Item>
-              <NavLink to = 'categoria/joyas/anillos'>Anillos</NavLink>
+              <NavLink to = 'categoria/Anillos'>Anillos</NavLink>
                 </NavDropdown.Item>
 
                 <NavDropdown.Item>
-              <NavLink to = 'categoria/joyas/collares'>Collares</NavLink>
+              <NavLink to = 'categoria/Collares'>Collares</NavLink>
               </NavDropdown.Item>
 
               <NavDropdown.Item>
-              <NavLink to = 'categoria/joyas/pulseras'>
+              <NavLink to = 'categoria/Pulseras'>
                Pulseras
               </NavLink>
               </NavDropdown.Item>
               <NavDropdown.Item>
-              <NavLink to = 'categoria/joyas/aretes'>
+              <NavLink to = 'categoria/Aretes'>
                Aretes
               </NavLink>
               </NavDropdown.Item>
             </NavDropdown>
-  
+ 
           </Nav>
         
           <section className='posit d-flex'>
