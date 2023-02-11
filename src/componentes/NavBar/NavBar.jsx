@@ -4,13 +4,14 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Container from 'react-bootstrap/Container';
+import { Link, NavLink } from "react-router-dom";
 
 function NavBar(){
     return(
 
       <Navbar bg="light" expand="lg" className='fixed-top'>
       <Container fluid>
-        <Navbar.Brand href="#">Mia Jewelers</Navbar.Brand>
+        <Link to ='/'>Mia Jewelers</Link>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -18,25 +19,38 @@ function NavBar(){
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="#action1">Servicios</Nav.Link>
-            <Nav.Link href="#action2">Relojes</Nav.Link>
+            
+            
+            <NavLink to = 'categoria/relojes'>Relojes</NavLink>
+
             <NavDropdown title="Joyas" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Anillos</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
-                Collares
+            
+              <NavDropdown.Item>
+              <NavLink to = 'categoria/joyas/anillos'>Anillos</NavLink>
+                </NavDropdown.Item>
+
+                <NavDropdown.Item>
+              <NavLink to = 'categoria/joyas/collares'>Collares</NavLink>
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action5">
+
+              <NavDropdown.Item>
+              <NavLink to = 'categoria/joyas/pulseras'>
                Pulseras
+              </NavLink>
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action6">
+              <NavDropdown.Item>
+              <NavLink to = 'categoria/joyas/aretes'>
                Aretes
+              </NavLink>
               </NavDropdown.Item>
             </NavDropdown>
+  
           </Nav>
         
           <section className='posit d-flex'>
+          <Link >
       <CartWidget/>
-      <ion-icon name="bag-outline"></ion-icon>
+      </Link>
       </section>
       <a className="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3 posita" href="#">LogIn</a>
         </Navbar.Collapse>

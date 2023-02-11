@@ -1,6 +1,7 @@
 
 
 import { React, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { gFetch } from "../../utils/gFetch";
 import ItemList from "../ItemList/ItemList";
 import Spinner from "../Spinner/Spinner";
@@ -13,6 +14,7 @@ export const ItemListContainer = ({ Greeting }) => {
     fontSize: 50,
     marginTop:'8%',
   };
+  const idCategoria  = useParams()
   const [products, setProducts] = useState([]);
   const [loading, setLoading] =useState(true)
   useEffect(() => {
@@ -23,6 +25,7 @@ export const ItemListContainer = ({ Greeting }) => {
   }, []);
 
 console.log(products)
+console.log(idCategoria)
   
   return (
     <>

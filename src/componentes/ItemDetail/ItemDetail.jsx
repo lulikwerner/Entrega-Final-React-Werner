@@ -2,8 +2,8 @@ import ItemCount from "../ItemCount/ItemCount";
 import Card from "react-bootstrap/Card";
 
 const ItemDetail = ({itemDet}) => {
-  const { id, category, brand, model, price, quantity, description, image } =
-    itemDet;
+  const { id, category, brand, model, price, quantity, description, image } = itemDet;
+    console.log(itemDet)
   const onAdd = (qty) => {
     console.log(`Compraste ${qty} item`);
   };

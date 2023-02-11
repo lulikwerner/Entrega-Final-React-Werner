@@ -1,8 +1,9 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { Link } from "react-router-dom";
 
 function Item({ prod }) {
-  const {  category, brand, model, price, quantity,  image } =
+  const {id, category, brand, model, price, quantity, image } =
     prod;
   const styles = {
     width: "18rem",
@@ -15,7 +16,7 @@ function Item({ prod }) {
   };
   return (
     <Card style={styles} >
-      <Card.Img variant="top" src={image} />
+      <Card.Img variant="top" src={prod.image} />
       <Card.Body>
         <Card.Title>{model}</Card.Title>
         <Card.Subtitle>{brand}</Card.Subtitle>
@@ -26,7 +27,9 @@ function Item({ prod }) {
           <br></br>
           Cantidad: {quantity}
         </Card.Text>
+        <Link to = {`/detalle/${id}`}>
         <Button variant="primary">Ver Detalles</Button>
+        </Link>
       </Card.Body>
     </Card>
   );
