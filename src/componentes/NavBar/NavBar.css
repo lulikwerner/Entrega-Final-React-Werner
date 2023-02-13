@@ -1,12 +1,12 @@
 .navbar-brand{
-    
     padding-left: 3%;
 }
 
-.posit{
-    padding-left: 20%;
+.Activo{
+   text-underline-offset: 'green';
+   background-color: purple;
     
 }
-.posita{
-    margin-left: 1%;
+.NoActivo{
+    color: 'red';
 }

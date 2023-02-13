@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Container from 'react-bootstrap/Container';
-import { Link, NavLink } from "react-router-dom";
+import { Link} from "react-router-dom";
 
 function NavBar(){
     return(
@@ -19,36 +19,26 @@ function NavBar(){
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-          
-            
-            <Link className={({isActive})=> isActive ?  'btn btn-primary' : 'btn btn-outline-primary'} to = 'categoria/Relojes' >Relojes</Link>
+
+            <Link  className={({isActive})=>isActive ?'Activo':'NoActivo'} to = 'categoria/Relojes' >Relojes</Link>
 
             <NavDropdown title="Joyas" id="navbarScrollingDropdown">
             
-              <NavDropdown.Item>
-              <NavLink to = 'categoria/Anillos'>Anillos</NavLink>
+              <NavDropdown.Item as={Link}  to = 'categoria/Anillos'>Anillos
                 </NavDropdown.Item>
-
-                <NavDropdown.Item>
-              <NavLink to = 'categoria/Collares'>Collares</NavLink>
-              </NavDropdown.Item>
-
-              <NavDropdown.Item>
-              <NavLink to = 'categoria/Pulseras'>
+                <NavDropdown.Item  as={Link}  to = 'categoria/Collares'>
+               Collares
+                </NavDropdown.Item>
+              <NavDropdown.Item  as={Link}  to = 'categoria/Pulseras'>
                Pulseras
-              </NavLink>
               </NavDropdown.Item>
-              <NavDropdown.Item>
-              <NavLink to = 'categoria/Aretes'>
-               Aretes
-              </NavLink>
-              </NavDropdown.Item>
+              <NavDropdown.Item  as={Link} to = 'categoria/Aretes'>
+               Aretes              
+               </NavDropdown.Item>
             </NavDropdown>
- 
           </Nav>
-        
-          <section className='posit d-flex'>
-          <Link >
+          <section >
+          <Link className="me-auto my-2 " >
       <CartWidget/>
       </Link>
       </section>

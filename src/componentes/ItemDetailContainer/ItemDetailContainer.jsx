@@ -11,6 +11,7 @@ const ItemDetailContainer = () => {
   const [loading, setLoading] = useState(true);
   
   useEffect(() => {
+    setLoading(true);
     gFetch()
       .then((Products) => setItemDetail(Products.find((item) => item.id === idProduct)))
       .catch((error) => console.log(error))
@@ -18,13 +19,13 @@ const ItemDetailContainer = () => {
   }, [idProduct]);
 
   return (
-    <div>
-      {loading ? <Spinner /> : <ItemDetail itemDet={itemDet}/>  }
-
-    </div>
-
+    <>
+      {loading ? 
+      <Spinner /> 
+      : <ItemDetail itemDet={itemDet}/> 
+       }
+    </>
   );
-
 };
 
 export default ItemDetailContainer;

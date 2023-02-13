@@ -19,6 +19,7 @@ export const ItemListContainer = ({ Greeting }) => {
   const [loading, setLoading] =useState(true);
   const {idCategoria}  = useParams();
   useEffect(() => {
+    setLoading(true);
     if(idCategoria){
       gFetch()
       .then((resp) => setProducts(resp.filter(Products => Products.category ===idCategoria)))
@@ -33,8 +34,6 @@ export const ItemListContainer = ({ Greeting }) => {
   },[idCategoria]);
   
 
-console.log(products)
-console.log(idCategoria)
   
   return (
     <>

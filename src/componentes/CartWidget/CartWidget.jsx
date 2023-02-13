@@ -1,4 +1,4 @@
-//Icono CART que este dentro del Navbar.js con numero hardcodeado(fijo). Tiene que ir dentro del Navbar
+
 
 import React from 'react'
 import { HiOutlineShoppingBag } from "react-icons/hi";
