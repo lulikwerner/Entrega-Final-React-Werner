@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { Spinner } from 'react-bootstrap';
+import {React,  useEffect, useState } from 'react';
+import Spinner from "../Spinner/Spinner";
 import { gFetch} from '../../utils/gFetch';
 import ItemDetail from '../../componentes/ItemDetail/ItemDetail';
 import { useParams } from 'react-router-dom';
+
 
 
 const ItemDetailContainer = () => {
@@ -21,7 +22,7 @@ const ItemDetailContainer = () => {
   return (
     <>
       {loading ? 
-      <Spinner /> 
+      <Spinner/> 
       : <ItemDetail itemDet={itemDet}/> 
        }
     </>

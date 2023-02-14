@@ -4,14 +4,14 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Container from 'react-bootstrap/Container';
-import { Link} from "react-router-dom";
+import { Link, NavLink} from "react-router-dom";
 
 function NavBar(){
     return(
 
       <Navbar bg="light" expand="lg" className='fixed-top'>
       <Container fluid>
-        <Link to ='/'>Mia Jewelers</Link>
+        <Link className= 'navbar-brand' to ='/'>Mia Jewelers</Link>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -20,11 +20,11 @@ function NavBar(){
             navbarScroll
           >
 
-            <Link  className={({isActive})=>isActive ?'Activo':'NoActivo'} to = 'categoria/Relojes' >Relojes</Link>
+            <NavLink  className={({isActive})=>isActive ?'Activo':'NoActivo'} to = 'categoria/Relojes' >Relojes</NavLink>
 
-            <NavDropdown title="Joyas" id="navbarScrollingDropdown">
+            <NavDropdown className={({isActive})=>isActive ?'Activo':'NoActivo'} title="Joyas" id="navbarScrollingDropdown">
             
-              <NavDropdown.Item as={Link}  to = 'categoria/Anillos'>Anillos
+              <NavDropdown.Item  className={({isActive})=>isActive ?'Activo':'NoActivo'} as={Link}  to = 'categoria/Anillos'>Anillos
                 </NavDropdown.Item>
                 <NavDropdown.Item  as={Link}  to = 'categoria/Collares'>
                Collares
