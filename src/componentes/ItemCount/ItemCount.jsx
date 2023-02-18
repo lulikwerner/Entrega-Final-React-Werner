@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 const ItemCount = ({initial, stock, onAdd}) => {
     const [count, setCount] = useState(initial);
     const substract = () => {
-      if (count > 0) {
+      if (count > initial) {
         setCount(count - 1);
       }
     };

@@ -38,7 +38,7 @@ function NavBar(){
             </NavDropdown>
           </Nav>
           <section >
-          <Link className="me-auto my-2 " >
+          <Link className="me-auto my-2 " to= 'carrito'>
       <CartWidget/>
       </Link>
       </section>

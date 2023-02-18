@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 
 
 
+
 const ItemDetailContainer = () => {
   const{idProduct}= useParams()
   const [itemDet, setItemDetail] = useState({});
@@ -23,7 +24,8 @@ const ItemDetailContainer = () => {
     <>
       {loading ? 
       <Spinner/> 
-      : <ItemDetail itemDet={itemDet}/> 
+      : <ItemDetail itemDet={itemDet}/>
+     
        }
     </>
   );
