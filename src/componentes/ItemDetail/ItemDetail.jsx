@@ -2,6 +2,7 @@ import ItemCount from "../ItemCount/ItemCount";
 import Card from "react-bootstrap/Card";
 import { useCartContext } from "../../context/CartContext";
 
+
 const ItemDetail = ({itemDet}) => {
   const {  brand, model, price, quantity, description, image } = itemDet;
   const {addToCart, cartList} = useCartContext()

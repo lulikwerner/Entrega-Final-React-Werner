@@ -36,7 +36,7 @@ const CartContainer = () => {
         </label>
         
       ))}
-      <button className="Empty" onClick={emptyCart}>
+      <button  className="Empty" onClick={emptyCart}>
        Vaciar Carrito
      </button>
     </div>
