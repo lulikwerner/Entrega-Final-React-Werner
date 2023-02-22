@@ -1,20 +1,8 @@
 import { useState } from "react"
 import { Link} from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 
-const successToast = () => toast.success("This is a success toast.");
-const message=()=>{
-    
-return(
-   
-        <div>
-          <button onClick={successToast}>Success toast</button>
-          <ToastContainer />
-        </div>
-)
-}
+
 const InputCount=()=> {
     return(
         <>
@@ -38,19 +26,19 @@ const ButtonCount = ({handleInter})=>{
 
 
 
-const Options =() =>{
+function Options(){
     const[inputType, setInputType] = useState('button')
 
     const handleInter=()=>{
         setInputType('input')
-        
+
     }
     return(
         
         <div>
         {
             inputType ==='button' ?
-            <ButtonCount handleInter={handleInter}/>
+            <ButtonCount handleInter={handleInter} />
             :
             <InputCount/>
         }
@@ -59,3 +47,4 @@ const Options =() =>{
 
 }
 export default Options
+
