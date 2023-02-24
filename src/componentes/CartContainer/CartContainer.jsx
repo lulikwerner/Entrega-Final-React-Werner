@@ -1,8 +1,10 @@
 import { useCartContext } from "../../context/CartContext";
 import "../CartContainer/CartContainer.css";
+
 const CartContainer = () => {
+    
   const { cartList, emptyCart } = useCartContext();
-  console.log("enel cart:", cartList);
+  console.log("en el cart:", cartList);
   const styleI = {
     width: " 5rem",
     height: "5rem",

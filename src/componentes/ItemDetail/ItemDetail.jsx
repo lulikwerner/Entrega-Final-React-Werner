@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const ItemDetail = ({itemDet}) => {
   const {  brand, model, price, quantity, description, image } = itemDet;
   const {addToCart, cartList} = useCartContext()
-  const successToast = () => toast.success("Se aniadio exitosamente", {
+  const successToast = () => toast.success("Se agrego exitosamente ", {
     position: "top-right",
     autoClose: 1500,
   
