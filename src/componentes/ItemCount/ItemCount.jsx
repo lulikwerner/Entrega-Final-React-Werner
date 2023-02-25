@@ -14,10 +14,12 @@ const ItemCount = ({initial, stock, onAdd}) => {
     };
   
     const add = () => {
+    
       if (count < stock) {
         setCount(count + 1);
       }
     };
+
   return (
    <>
     <div>
@@ -31,12 +33,18 @@ const ItemCount = ({initial, stock, onAdd}) => {
         </button>
       
       </div>
+      <div>
+      
   <div disabled={count === 0 || stock === 0}
-onClick={() => onAdd(count)}>
-      <Options/>
+onClick={({}) => onAdd(count)}>
+   <Options/>
+  </div>
+  
       </div>
+     
    </>
   )
+ 
 }
     
 export default ItemCount;

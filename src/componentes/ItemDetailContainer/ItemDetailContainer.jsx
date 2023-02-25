@@ -3,6 +3,7 @@ import Spinner from "../Spinner/Spinner";
 import { gFetch} from '../../utils/gFetch';
 import ItemDetail from '../../componentes/ItemDetail/ItemDetail';
 import { useParams } from 'react-router-dom';
+import Options from '../Options/Options';
 
 
 
@@ -27,6 +28,7 @@ const ItemDetailContainer = () => {
       : <ItemDetail itemDet={itemDet}/>
      
        }
+      
     </>
   );
 };

@@ -2,8 +2,8 @@ import { useState } from "react"
 import { Link} from "react-router-dom";
 
 
-
 const InputCount=()=> {
+
     return(
         <>
         <Link to ='/carrito'>
@@ -12,7 +12,7 @@ const InputCount=()=> {
         </Link>
         <Link to='/'>
         <button className="btn btn-outline-primary"
-            onClick={()=>console.log('Home')}>Seguir Comprando</button>
+           onClick={()=>console.log('Home')}>Seguir Comprando</button>
         </Link>
         </>
     )
@@ -24,9 +24,7 @@ const ButtonCount = ({handleInter})=>{
     )
 }
 
-
-
-function Options(){
+const Options= () =>{
     const[inputType, setInputType] = useState('button')
 
     const handleInter=()=>{

@@ -3,6 +3,9 @@ import Card from "react-bootstrap/Card";
 import { useCartContext } from "../../context/CartContext";
 import { ToastContainer, toast, Zoom } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useState } from "react";
+import Options from "../Options/Options";
+
 
 
 
@@ -11,10 +14,10 @@ import 'react-toastify/dist/ReactToastify.css';
 const ItemDetail = ({itemDet}) => {
   const {  brand, model, price, quantity, description, image } = itemDet;
   const {addToCart, cartList} = useCartContext()
+  const [purchase, setPurchase] =useState(false)
   const successToast = () => toast.success("Se agrego exitosamente ", {
     position: "top-right",
     autoClose: 1500,
-  
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,
@@ -26,7 +29,9 @@ const ItemDetail = ({itemDet}) => {
   function onAdd (qty)  {
     console.log(`Compraste ${qty} item`);
     console.log(itemDet)
+    setPurchase(true)
     addToCart({...itemDet,qty})
+   
     console.log('Cart list:' ,cartList)
     successToast()
   };
@@ -56,11 +61,12 @@ const styleD ={
           <br></br>
           <br></br>
           Precio: {price}
-          <br></br>
           Cantidad: {quantity}
         </Card.Text>
         <br></br>
-        <ItemCount initial={1} stock={quantity} onAdd={onAdd} />
+        {purchase ? <Options/> :  <ItemCount initial={1} stock={quantity} onAdd={onAdd} />}
+       
+
       </Card.Body>
      
     </Card>
