@@ -61,10 +61,11 @@ const styleD ={
           <br></br>
           <br></br>
           Precio: {price}
+          <br></br>
           Cantidad: {quantity}
         </Card.Text>
-        <br></br>
-       
+    
+
         {
           purchase ? <Options/> : <ItemCount initial={1} stock={quantity} onAdd={onAdd} />
         }

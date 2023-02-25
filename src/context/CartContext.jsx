@@ -4,18 +4,12 @@ import { createContext, useContext, useState } from "react";
  export const useCartContext = () => useContext(CartContext)
 
 
-
-
-
-
-
 export const CartContextProvider = ({children}) =>{
     const[cartList,setCartList]=useState([])
 
-    //Falta agregar la logica para cuando agrego el mismo producto se sume y no se me vuelva a producir
 
 
-    const addToCart = ( Product) =>{
+const addToCart = ( Product) =>{
         const aux = cartList.findIndex((x) => x.id === Product.id);
      
       
@@ -33,6 +27,14 @@ export const CartContextProvider = ({children}) =>{
        
     }
 }
+
+
+const totalPrice = () => cartList.reduce((count,product) => count +=(product.qty*product.price))
+
+const totalQty= () => cartList.reduce((count,product) => count +=product.qty,0)
+
+const deleteProduct =(id) =>setCartList(cartList.filter(prod => prod.id!==id))
+
     const emptyCart = () => {
         setCartList([])
     }
@@ -40,7 +42,10 @@ export const CartContextProvider = ({children}) =>{
         <CartContext.Provider value ={{
             cartList,
             addToCart,
-            emptyCart
+            emptyCart,
+            totalPrice,
+            totalQty,
+            deleteProduct
         }}>
             {children}
         </CartContext.Provider>

@@ -41,6 +41,9 @@ const CartContainer = () => {
       <button  className="Empty" onClick={emptyCart}>
        Vaciar Carrito
      </button>
+     <button  link to = '/'>
+       Volver al inicio
+     </button>
     </div>
     
   );
