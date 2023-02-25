@@ -2,7 +2,8 @@ import { useState } from "react"
 import { Link} from "react-router-dom";
 
 
-const InputCount=()=> {
+
+const Options= () =>{
 
     return(
         <>
@@ -16,33 +17,6 @@ const InputCount=()=> {
         </Link>
         </>
     )
-}
-const ButtonCount = ({handleInter})=>{
-    return(
-        <button className="btn btn-dark"
-        onClick={handleInter} >Comprar</button>
-    )
-}
-
-const Options= () =>{
-    const[inputType, setInputType] = useState('button')
-
-    const handleInter=()=>{
-        setInputType('input')
-
-    }
-    return(
-        
-        <div>
-        {
-            inputType ==='button' ?
-            <ButtonCount handleInter={handleInter} />
-            :
-            <InputCount/>
-        }
-        </div>
-    )
 
 }
 export default Options
-

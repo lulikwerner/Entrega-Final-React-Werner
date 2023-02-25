@@ -31,16 +31,11 @@ const ItemCount = ({initial, stock, onAdd}) => {
         <button className="btn btn-dark"  onClick={add}>
           +
         </button>
-      
+        <button onClick={()=>{onAdd(count)}}>Comprar</button>
       </div>
-      <div>
+ 
       
-  <div disabled={count === 0 || stock === 0}
-onClick={({}) => onAdd(count)}>
-   <Options/>
-  </div>
-  
-      </div>
+
      
    </>
   )

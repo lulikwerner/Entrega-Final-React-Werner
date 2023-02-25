@@ -29,9 +29,9 @@ const ItemDetail = ({itemDet}) => {
   function onAdd (qty)  {
     console.log(`Compraste ${qty} item`);
     console.log(itemDet)
-    setPurchase(true)
+    
     addToCart({...itemDet,qty})
-   
+    setPurchase(true)
     console.log('Cart list:' ,cartList)
     successToast()
   };
@@ -64,9 +64,11 @@ const styleD ={
           Cantidad: {quantity}
         </Card.Text>
         <br></br>
-        {purchase ? <Options/> :  <ItemCount initial={1} stock={quantity} onAdd={onAdd} />}
        
-
+        {
+          purchase ? <Options/> : <ItemCount initial={1} stock={quantity} onAdd={onAdd} />
+        }
+       
       </Card.Body>
      
     </Card>
