@@ -51,11 +51,80 @@
   .total-qty{
     font-size: 14px;
     padding-top: 10px;
-    width:auto;
+    width:100%;
     padding-left:5%;
 
   }
   .Empty{
    margin-left: 0%;
    width:62%;
+  }
+
+  .buttons {
+    position: relative;
+    padding-top: 30px;
+    margin-right: 60px;
+  }
+  .delete-btn,
+  .like-btn {
+    display: inline-block;
+    Cursor: pointer;
+  }
+  .delete-btn {
+    width: 18px;
+    height: 17px;
+    background: '/ecommerce/public/assets/img/icons8-close-16.png'  no-repeat center;
+  }
+   
+  .like-btn {
+    position: absolute;
+    top: 9px;
+    left: 15px;
+    background: url('twitter-heart.png');
+    width: 60px;
+    height: 60px;
+    background-size: 2900%;
+    background-repeat: no-repeat;
+  }
+
+  quantity {
+    padding-top: 20px;
+    margin-right: 60px;
+  }
+  .quantity input {
+
+    border: none;
+    text-align: center;
+    width: 32px;
+    font-size: 16px;
+    color: #43484D;
+    font-weight: 300;
+  }
+   
+  .pn {
+    width: 30px;
+    height: 30px;
+    background-color: #E1E8EE;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+  }
+  .minus-btn img {
+    margin-bottom: 3px;
+  }
+  .plus-btn img {
+    margin-top: 2px;
+  }
+   
+  button:focus,
+  input:focus {
+    outline:0;
+  }
+  .total-price {
+    width: 83px;
+    padding-top: 27px;
+    text-align: center;
+    font-size: 16px;
+    color: #43484D;
+    font-weight: 300;
   }

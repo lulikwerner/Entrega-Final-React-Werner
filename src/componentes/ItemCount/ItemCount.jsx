@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import Options from '../Options/Options';
-  import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 
     
 
@@ -34,10 +33,6 @@ const ItemCount = ({initial, stock, onAdd}) => {
         <br></br>
         <button onClick={()=>{onAdd(count)}}>Comprar</button>
       </div>
- 
-      
-
-     
    </>
   )
  

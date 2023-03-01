@@ -11,9 +11,6 @@ export const CartContextProvider = ({children}) =>{
 
 const addToCart = ( Product) =>{
         const aux = cartList.findIndex((x) => x.id === Product.id);
-     
-      
-       
         if(aux!=-1){
            
             cartList[aux].qty+=Product.qty
@@ -29,7 +26,7 @@ const addToCart = ( Product) =>{
 }
 
 
-const totalPrice = () => cartList.reduce((count,product) => count +=(product.qty*product.price))
+const totalPrice= () => cartList.reduce((count,product) => count +=(product.qty*product.price),0)
 
 const totalQty= () => cartList.reduce((count,product) => count +=product.qty,0)
 
@@ -43,9 +40,9 @@ const deleteProduct =(id) =>setCartList(cartList.filter(prod => prod.id!==id))
             cartList,
             addToCart,
             emptyCart,
-            totalPrice,
             totalQty,
-            deleteProduct
+            totalPrice,
+            deleteProduct,
         }}>
             {children}
         </CartContext.Provider>

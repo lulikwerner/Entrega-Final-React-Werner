@@ -22,14 +22,14 @@ function Item({ prod }) {
   }
   return (
     <Card style={styles} >
-      <Card.Img variant="top" style = {styleI}src={prod.image} />
+      <Card.Img variant="top" style = {styleI}src={image} />
       <Card.Body>
         <Card.Title>{model}</Card.Title>
         <Card.Subtitle>{brand}</Card.Subtitle>
         <Card.Text>
           Categoria: {category}
           <br></br>
-          Precio: {price}
+          Precio:$ {price} USD
           <br></br>
           Cantidad: {quantity}
         </Card.Text>

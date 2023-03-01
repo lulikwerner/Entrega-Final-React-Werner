@@ -26,7 +26,7 @@ const ItemDetailContainer = () => {
       {loading ? 
       <Spinner/> 
       : <ItemDetail itemDet={itemDet}/>
-     
+
        }
       
     </>

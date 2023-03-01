@@ -60,7 +60,7 @@ const styleD ={
           Detalle: {description}
           <br></br>
           <br></br>
-          Precio: {price}
+          Precio:$ {price} USD
           <br></br>
           Cantidad: {quantity}
         </Card.Text>
