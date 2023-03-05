@@ -1,3 +1,4 @@
+import { getFirestore } from "firebase/firestore";
 import { createContext, useContext, useState } from "react";
 
  const CartContext = createContext([])
@@ -10,6 +11,7 @@ export const CartContextProvider = ({children}) =>{
 
 
 const addToCart = ( Product) =>{
+ 
         const aux = cartList.findIndex((x) => x.id === Product.id);
         if(aux!=-1){
            

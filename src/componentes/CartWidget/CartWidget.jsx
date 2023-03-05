@@ -19,7 +19,7 @@ function CartWidget(){
       height: "14px",
       width: "18px",
       background:'none',
-      top:-'10px',
+      top:'10%',
       left:'50%',
     }
     const {totalQty}=useCartContext()

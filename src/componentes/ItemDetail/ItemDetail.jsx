@@ -5,14 +5,11 @@ import { ToastContainer, toast, Zoom } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from "react";
 import Options from "../Options/Options";
-
-
-
-
+import Caso1 from "../Caso1/Caso1"
 
 
 const ItemDetail = ({itemDet}) => {
-  const {  brand, model, price, quantity, description, image } = itemDet;
+  const { brand, model, price, quantity, description, image, options } = itemDet;
   const {addToCart, cartList} = useCartContext()
   const [purchase, setPurchase] =useState(false)
   const successToast = () => toast.success("Se agrego exitosamente ", {
@@ -48,10 +45,19 @@ const styleD ={
   height:'15rem'
   
 }
+
+if(options === true){
+  return <>
+  <div>
+    agregar Caso1
+  </div>
+  </>
+}else{
   return (
     <Card>
        <ToastContainer transition={Zoom} toastStyle={{ backgroundColor: "#f4fdff", color: "#44dee3"}}/>
       <Card.Img style ={styleI} variant="top" src={image} />
+      
       <Card.Body>
         <Card.Title>{model}</Card.Title>
         <Card.Subtitle>{brand}</Card.Subtitle>
@@ -74,6 +80,6 @@ const styleD ={
      
     </Card>
   );
-};
+};}
 
 export default ItemDetail;

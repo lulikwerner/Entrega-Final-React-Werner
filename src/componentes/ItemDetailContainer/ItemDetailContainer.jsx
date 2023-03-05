@@ -1,10 +1,8 @@
 import {React,  useEffect, useState } from 'react';
 import Spinner from "../Spinner/Spinner";
-import { gFetch} from '../../utils/gFetch';
 import ItemDetail from '../../componentes/ItemDetail/ItemDetail';
 import { useParams } from 'react-router-dom';
-import Options from '../Options/Options';
-
+import {doc, getFirestore, getDoc} from 'firebase/firestore'
 
 
 
@@ -13,13 +11,17 @@ const ItemDetailContainer = () => {
   const [itemDet, setItemDetail] = useState({});
   const [loading, setLoading] = useState(true);
   
-  useEffect(() => {
-    setLoading(true);
-    gFetch()
-      .then((Products) => setItemDetail(Products.find((item) => item.id === idProduct)))
-      .catch((error) => console.log(error))
-      .finally(() => setLoading(false));
-  }, [idProduct]);
+  useEffect (() => {
+        const db = getFirestore()
+        const queryDoc = doc (db,'products', idProduct)
+        getDoc(queryDoc)
+        .then (respProd => setItemDetail({id :respProd.id, ...respProd.data()}))
+        .catch((error) => console.log(error))
+        .finally(() => setLoading(false));
+    },[])
+
+
+
 
   return (
     <>

@@ -1,8 +1,11 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
+import { React} from "react";
+
 
 function Item({ prod }) {
+
   const {id, category, brand, model, price, quantity, image } =
     prod;
   const styles = {
