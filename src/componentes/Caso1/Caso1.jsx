@@ -23,21 +23,29 @@ return(
 export default function Caso1(){
     const[option, setOptions]=useState(1)
 
-    function OptionSelected(value){
+    function optionSelected(value){
         setOptions(value)
     }
     return(
         <>
+
         {option===1 ?
-        <img src=""/>
+
+
+        <img src="../public/assets/img/CartierLoveYG.jpg"/>
         :
-        <img src="./public/assets/CartierLove.jpg"/>
+        <img src="../public/assets/img/CartierLove.jpg"/>
+  
         }
+        
         <Select
         options ={options}
         optionSelected = {optionSelected}
         option = {option}
         />
+
         </>
     );
 }
+
+

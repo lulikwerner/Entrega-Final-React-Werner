@@ -3,12 +3,17 @@ import "../CartContainer/CartContainer.css";
 import { Link} from "react-router-dom";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 import { useState } from "react";
-
+import HeartWidget from "../widget/widget"
 
 
 
 
 const CartContainer = () => {
+
+  const [active, setAct] = useState({});
+  const toggleActive = (ProductsId) => () => setAct({ ...active, [ProductsId]: !active[ProductsId] })
+
+  const [id,setId] = useState('')
   const [dataForm, setDataForm] = useState({
     name: '',
     phone: '',
@@ -21,6 +26,16 @@ const CartContainer = () => {
     height: "5rem",
     marginLeft: "15%",
   };
+ 
+ 
+ /* const [emailError,setEmailError] = useState(null)
+const validateEmail =() =>{
+  setEmailError(null)
+  if(email !== emailValidate )
+
+}*/
+
+
 
 const createOrder = (event) =>{
   event.preventDefault()
@@ -34,7 +49,7 @@ const db = getFirestore()
 const queryCollection = collection(db, 'orders')
 
 addDoc(queryCollection, order)
-.then(resp => console.log(resp))
+.then(resp => setId(resp.id))
 .catch( err =>console.log(err))
 .finally(() =>{
   emptyCart(),
@@ -46,6 +61,7 @@ addDoc(queryCollection, order)
   })
 })
 
+
 }
 
 const handleOnChange = (evet) =>{
@@ -56,7 +72,7 @@ setDataForm({
 }
 
   
-  if(cartList.length === 0){
+  if(cartList.length === 0 ){
     return <>
     <h2>El carrito de compras esta vacio</h2><div>
       <Link to="/">
@@ -68,17 +84,21 @@ setDataForm({
     </>
   }
 
+
+
   return (
     <div>
+     {id != '' && <h2>Su numero de orden es: {id}</h2>}
         <div className="title">Shopping Bag </div>
       {cartList.map((Products) => (
         <label key={Products.id}>
           <div className="shopping-cart">
             <div className="item">
             <div className="buttons">
-      <span className="delete-btn" onClick={()=>deleteProduct(Products.id)}> x</span>
-  
-      <span className="like-btn"></span>
+      <span className="deleteBtn" style ={{ fontSize:21}}onClick={()=>deleteProduct(Products.id)}> x</span>
+      <div key={Products.id}>
+      <span class="likeBtn"  onClick={toggleActive(Products.id)} style={{ color: active[Products.id] ? "red" : "gray" }}><HeartWidget/></span>
+  </div>
     </div>
 
               <div>
@@ -110,6 +130,18 @@ setDataForm({
         </label>
         
       ))}
+      <br></br>
+      <button  className="Empty" onClick={emptyCart}>
+       Vaciar Carrito
+     </button>
+     <Link to ="/">
+     <button>
+       Volver al inicio
+     </button>
+
+    
+     </Link>    
+      $ {totalPrice()} USD
 
 <div className="container " onSubmit ={createOrder}>
 <form>
@@ -130,18 +162,7 @@ setDataForm({
 </form>
 
 </div>
-<br></br>
-      <button  className="Empty" onClick={emptyCart}>
-       Vaciar Carrito
-     </button>
-     <Link to ="/">
-     <button>
-       Volver al inicio
-     </button>
 
-    
-     </Link>    
-      $ {totalPrice()} USD
     </div>
     
   );

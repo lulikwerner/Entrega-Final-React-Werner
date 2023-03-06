@@ -46,18 +46,13 @@ const styleD ={
   
 }
 
-if(options === true){
-  return <>
-  <div>
-    agregar Caso1
-  </div>
-  </>
-}else{
   return (
     <Card>
        <ToastContainer transition={Zoom} toastStyle={{ backgroundColor: "#f4fdff", color: "#44dee3"}}/>
-      <Card.Img style ={styleI} variant="top" src={image} />
-      
+
+       {options ===false  && <Card.Img style ={styleI} variant="top" src={image} />}
+       {options ===true  && <Caso1 />}
+  
       <Card.Body>
         <Card.Title>{model}</Card.Title>
         <Card.Subtitle>{brand}</Card.Subtitle>
@@ -80,6 +75,6 @@ if(options === true){
      
     </Card>
   );
-};}
+};
 
 export default ItemDetail;

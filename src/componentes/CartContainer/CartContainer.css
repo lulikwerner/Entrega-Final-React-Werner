@@ -65,34 +65,26 @@
     padding-top: 30px;
     margin-right: 60px;
   }
-  .delete-btn,
-  .like-btn {
+  .deleteBtn,
+  .likeBtn {
     display: inline-block;
     Cursor: pointer;
+    position: absolute;
   }
-  .delete-btn {
-    width: 18px;
-    height: 17px;
-    background: '/ecommerce/public/assets/img/icons8-close-16.png'  no-repeat center;
+  .deleteBtn {
+    padding-right:100px;
+    
+    top: 20px;
+    width: 40px;
+    height: 10px;
+    color:'gray';
   }
    
-  .like-btn {
-    position: absolute;
-    top: 9px;
-    left: 15px;
-    background: url('twitter-heart.png');
-    width: 60px;
-    height: 60px;
-    background-size: 2900%;
-    background-repeat: no-repeat;
-  }
-
-  quantity {
+  .quantity {
     padding-top: 20px;
     margin-right: 60px;
   }
   .quantity input {
-
     border: none;
     text-align: center;
     width: 32px;
@@ -166,8 +158,16 @@ buttonR {
   border-radius: 0.25em;
 }
 
-
 buttonR:hover {
   cursor: pointer;
   background-color: rgb(41, 4, 164);
+}
+
+.likeBtn {
+  position: absolute;
+  top: 18px;
+  padding-left:40px;
+  width: 25px;
+  height: 10px;
+
 }

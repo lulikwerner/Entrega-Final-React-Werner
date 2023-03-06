@@ -34,6 +34,15 @@ const totalQty= () => cartList.reduce((count,product) => count +=product.qty,0)
 
 const deleteProduct =(id) =>setCartList(cartList.filter(prod => prod.id!==id))
 
+
+
+
+
+
+
+ 
+
+
     const emptyCart = () => {
         setCartList([])
     }
@@ -45,6 +54,7 @@ const deleteProduct =(id) =>setCartList(cartList.filter(prod => prod.id!==id))
             totalQty,
             totalPrice,
             deleteProduct,
+            likeProduct,
         }}>
             {children}
         </CartContext.Provider>
