@@ -54,7 +54,7 @@ const deleteProduct =(id) =>setCartList(cartList.filter(prod => prod.id!==id))
             totalQty,
             totalPrice,
             deleteProduct,
-            likeProduct,
+
         }}>
             {children}
         </CartContext.Provider>

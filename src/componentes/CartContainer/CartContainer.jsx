@@ -28,14 +28,6 @@ const CartContainer = () => {
   };
  
  
- /* const [emailError,setEmailError] = useState(null)
-const validateEmail =() =>{
-  setEmailError(null)
-  if(email !== emailValidate )
-
-}*/
-
-
 
 const createOrder = (event) =>{
   event.preventDefault()
@@ -70,10 +62,20 @@ setDataForm({
   [evet.target.name]: evet.target.value,
 })
 }
-
+if(id!==''){
+  return <>
+  {id!== '' &&<div> <h1> Gracias por su compra</h1><h2>El numero de orden es: </h2> <h4>{id}</h4>
+  <Link to="/">
+        <button>
+          Volver al inicio
+        </button>
+      </Link></div>}
+  </>
+}
   
-  if(cartList.length === 0 ){
+  else  if(cartList.length === 0 ){
     return <>
+    
     <h2>El carrito de compras esta vacio</h2><div>
       <Link to="/">
         <button>
@@ -88,7 +90,7 @@ setDataForm({
 
   return (
     <div>
-     {id != '' && <h2>Su numero de orden es: {id}</h2>}
+
         <div className="title">Shopping Bag </div>
       {cartList.map((Products) => (
         <label key={Products.id}>
@@ -97,7 +99,7 @@ setDataForm({
             <div className="buttons">
       <span className="deleteBtn" style ={{ fontSize:21}}onClick={()=>deleteProduct(Products.id)}> x</span>
       <div key={Products.id}>
-      <span class="likeBtn"  onClick={toggleActive(Products.id)} style={{ color: active[Products.id] ? "red" : "gray" }}><HeartWidget/></span>
+      <span className="likeBtn"  onClick={toggleActive(Products.id)} style={{ color: active[Products.id] ? "red" : "gray" }}><HeartWidget/></span>
   </div>
     </div>
 
@@ -158,6 +160,7 @@ setDataForm({
 
   <label ><b>Validar email</b></label>
   <input type="text" placeholder="Validar email" onChange={handleOnChange} name="emailRepeat" value ={dataForm.emailRepeat} id="emailRepeat" required />
+ {dataForm.email!== dataForm.emailRepeat &&<div> revise</div>}
 <button > Crear Orden </button>
 </form>
 
@@ -169,6 +172,3 @@ setDataForm({
 };
 
 export default CartContainer;
-
-
-
