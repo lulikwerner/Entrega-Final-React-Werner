@@ -4,7 +4,7 @@ import { Link} from "react-router-dom";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 import { useState } from "react";
 import HeartWidget from "../widget/widget"
-
+import Form from "../Form/Form"
 
 
 
@@ -56,12 +56,7 @@ addDoc(queryCollection, order)
 
 }
 
-const handleOnChange = (evet) =>{
-setDataForm({
-  ...dataForm,
-  [evet.target.name]: evet.target.value,
-})
-}
+
 if(id!==''){
   return <>
   {id!== '' &&<div> <h1> Gracias por su compra</h1><h2>El numero de orden es: </h2> <h4>{id}</h4>
@@ -144,27 +139,12 @@ if(id!==''){
     
      </Link>    
       $ {totalPrice()} USD
+      <Form/>
+      <button onClick ={createOrder} > Crear Orden </button>
 
-<div className="container " onSubmit ={createOrder}>
-<form>
-  <h1>Registrarse</h1>
-  <p>Por favor ingrese sus datos</p>
-  <label ><b>Username</b></label>
-  <input type="text" placeholder="Ingresar el nombre" onChange={handleOnChange} name="name" value ={dataForm.name} id="name" require />
 
-  <label><b>Telefono</b></label>
-  <input type="text" placeholder="Ingresar telefono" onChange={handleOnChange} name="phone" value ={dataForm.phone} id="phone" require />
 
-  <label><b>Email</b></label>
-  <input type="text" placeholder="Ingresar Email"  onChange={handleOnChange} name="email" value ={dataForm.email} id="email" require />
 
-  <label ><b>Validar email</b></label>
-  <input type="text" placeholder="Validar email" onChange={handleOnChange} name="emailRepeat" value ={dataForm.emailRepeat} id="emailRepeat" required />
- {dataForm.email!== dataForm.emailRepeat &&<div> revise</div>}
-<button > Crear Orden </button>
-</form>
-
-</div>
 
     </div>
     
