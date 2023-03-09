@@ -1,21 +1,20 @@
 import { useState } from "react";
 import { useCartContext } from "../../context/CartContext";
+import "../CartContainer/CartContainer.css";
+import { Link} from "react-router-dom";
+import { addDoc, collection, getFirestore } from "firebase/firestore";
+
+
+
 const Form = () => {
+  
     const [dataForm, setDataForm] = useState({
         name: '',
         phone: '',
         email: '',
-
+        emailRepeat:'',
       
       })
-      const [mail,setMail] = useState(null);
-      let email = (e) => { setMail(e.target.value) }
-      const [validMail,setValidMail] = useState(null);
-      let validEmail = (e) => { setValidMail(e.target.value) }
-      const { cartList, emptyCart, totalPrice } = useCartContext();
-      const [id,setId] = useState('')
-
-
 
    const handleOnChange = (evet) =>{
     setDataForm({
@@ -24,31 +23,55 @@ const Form = () => {
     })
   }
 
+
+
+  const { cartList, emptyCart, totalPrice } = useCartContext();
+  const createOrder= () =>{
+  const order ={}
+  order.buyer = dataForm
+  order.totalPrice=totalPrice()
+  order.products= cartList.map(({id,brand,price})=>({id,brand,price}))
+  
+  //Agregar una orden en Firestore
+  const db = getFirestore()
+  const queryCollection = collection(db, 'orders')
+  
+  addDoc(queryCollection, order)
+  .then(resp => alert(`Muchas gracias por su compra su orden es : ${resp.id}`) )
+  .catch( err =>console.log(err))
+  .finally(() =>{
+    emptyCart(),
+    setDataForm({
+      name: '',
+      phone: '',
+      email: '',
+    
+    })
+  })
+
+  }
+  
+
+
+
   //Valida que sea el mismo email
-   /*const  [emailValidate,setEmailValidate]=useState("")
+   const  [error,setError]=useState("")
    const handleSubmit= (eve) =>{
    eve.preventDefault()
-       if(email!==validEmail){
-           setEmailValidate('Por favor ingresar el mismo email')
-           console.log(mail)
-           console.log(validMail)
+       if(dataForm.email!==dataForm.emailRepeat){
+           setError('Por favor ingresar el mismo email')
            return
-   }
-   setEmailValidate("")
+   }else{
+   setError(""),
    createOrder()
-   }*/
+   }}
 
-   
 
-       
-      
-
-  
 
 
     return(
         <div className="container " >
-<form >
+<form  onSubmit= {handleSubmit}>
   <h1>Registrarse</h1>
   <p>Por favor ingrese sus datos</p>
   <label ><b>Username</b></label>
@@ -62,12 +85,12 @@ const Form = () => {
 
   <label ><b>Validar email</b></label>
   <input type="text" placeholder="Validar email" onChange={handleOnChange}  name="emailRepeat"  id="emailRepeat" required />
-
+  {error &&<div>{error}</div>}
+  <button > Continuar </button>
 </form>
 
 </div>
     )
-    
     }
 
 export default Form

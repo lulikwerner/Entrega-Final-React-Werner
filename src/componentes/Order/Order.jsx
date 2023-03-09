@@ -2,12 +2,12 @@ import { useState } from "react"
 
 
 
- const CreateOrder = (event) =>{
+ const CreateOrder = () =>{
 
-const [id,setId] = useState('')
+/*const [id,setId] = useState('')
 
 
-    event.preventDefault()
+  event.preventDefault()
   const order ={}
   order.buyer = dataForm
   order.totalPrice=totalPrice()
@@ -52,8 +52,10 @@ const [id,setId] = useState('')
         </Link>
       </div>
       </>
-    }
-  
+    }*/
+  return(
+    console.log('entro')
+  )
 
 
 
