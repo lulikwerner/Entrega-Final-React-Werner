@@ -1,66 +1,48 @@
 import { useState } from "react"
+import { useCartContext } from "../../context/CartContext";
+import { addDoc, collection, getFirestore } from "firebase/firestore";
 
 
+ const Order = () =>{
 
- const CreateOrder = () =>{
-
-/*const [id,setId] = useState('')
-
-
-  event.preventDefault()
-  const order ={}
-  order.buyer = dataForm
-  order.totalPrice=totalPrice()
-  order.products= cartList.map(({id,brand,price})=>({id,brand,price}))
+  const [dataForm, setDataForm] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    emailRepeat:'',
   
-  //Agregar una orden en Firestore
-  const db = getFirestore()
-  const queryCollection = collection(db, 'orders')
-  
-  addDoc(queryCollection, order)
-  .then(resp => setId(resp.id))
-  .catch( err =>console.log(err))
-  .finally(() =>{
-    emptyCart(),
-    setDataForm({
-      name: '',
-      phone: '',
-      email: '',
-    
-    })
   })
 
-  if(id!==''){
-    return <>
-    {id!== '' &&<div> <h1> Gracias por su compra</h1><h2>El numero de orden es: </h2> <h4>{id}</h4>
-    <Link to="/">
-          <button>
-            Volver al inicio
-          </button>
-        </Link></div>}
-    </>
-  }
-    
-    else  if(cartList.length === 0 ){
-      return <>
-      
-      <h2>El carrito de compras esta vacio</h2><div>
-        <Link to="/">
-          <button>
-            Volver al inicio
-          </button>
-        </Link>
-      </div>
-      </>
-    }*/
+const[order,setOrder]=useState("")
+const { cartList, emptyCart, totalPrice } = useCartContext();
+const createOrder= ({setOrder}) =>{
+const order ={}
+order.buyer = dataForm
+order.totalPrice=totalPrice()
+setOrder(order.products= cartList.map(({id,brand,price})=>({id,brand,price})))
+
+//Agregar una orden en Firestore
+const db = getFirestore()
+const queryCollection = collection(db, 'orders')
+
+addDoc(queryCollection, order)
+.then(resp => setId(resp.id) )
+.catch( err =>console.log(err))
+.finally(() =>{
+emptyCart(),
+setDataForm({
+  name: '',
+  phone: '',
+  email: '',
+
+})
+})
+}
+if(order !== ''){
   return(
-    console.log('entro')
+    <div>Muchas gracias por su compra su orden es: {id}</div>
+   
   )
-
-
-
-
-  }
-
-
-export default CreateOrder;
+}
+ }
+export default Order;

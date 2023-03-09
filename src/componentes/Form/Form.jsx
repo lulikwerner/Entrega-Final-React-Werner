@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { useCartContext } from "../../context/CartContext";
 import "../CartContainer/CartContainer.css";
-import { Link} from "react-router-dom";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
-
 
 
 const Form = ({setId}) => {
@@ -24,9 +22,7 @@ const Form = ({setId}) => {
   }
 
 
-
   const { cartList, emptyCart, totalPrice } = useCartContext();
-  
   const createOrder= () =>{
   const order ={}
   order.buyer = dataForm
@@ -49,12 +45,8 @@ const Form = ({setId}) => {
     
     })
   })
-
   }
-  
-
-
-
+ 
   //Valida que sea el mismo email
    const  [error,setError]=useState("")
    const handleSubmit= (eve) =>{
@@ -67,9 +59,6 @@ const Form = ({setId}) => {
    createOrder()
    }}
 
-
-
-
     return(
         <div className="container " >
 <form  onSubmit= {handleSubmit}>
@@ -77,19 +66,15 @@ const Form = ({setId}) => {
   <p>Por favor ingrese sus datos</p>
   <label ><b>Username</b></label>
   <input type="text" placeholder="Ingresar el nombre" onChange={handleOnChange} name="name"  id="name" require />
-
   <label><b>Telefono</b></label>
   <input type="text" placeholder="Ingresar telefono" onChange={handleOnChange} name="phone"  id="phone" require />
-
   <label ><b>Email</b></label>
   <input type="text" placeholder="Validar email" onChange={handleOnChange} name="email"  id="email" required />
-
   <label ><b>Validar email</b></label>
   <input type="text" placeholder="Validar email" onChange={handleOnChange}  name="emailRepeat"  id="emailRepeat" required />
   {error &&<div>{error}</div>}
   <button > Crear orden</button>
 </form>
-
 </div>
     )
     }
