@@ -17,7 +17,16 @@ const CartContainer = () => {
     marginLeft: "15%",
   };
 
-  if (cartList.length === 0) {
+  const [id, setId]= useState('')
+
+  if(id !== ''){
+    return(
+      <div>Muchas gracias por su compra su orden es: {id}</div>
+     
+    )
+  }
+
+  else if (cartList.length === 0) {
     return (
       <>
         <h2>El carrito de compras esta vacio</h2>
@@ -75,10 +84,13 @@ const CartContainer = () => {
         <button>Volver al inicio</button>
       </Link>
       $ {totalPrice()} USD
-      <Form />
-      <button> Crear Ordenn </button>
+      <button>Continuar</button>
+      
+      <Form setId={setId}/>
+     
     </div>
   );
 };
+
 
 export default CartContainer;

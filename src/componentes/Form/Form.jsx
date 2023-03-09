@@ -6,7 +6,7 @@ import { addDoc, collection, getFirestore } from "firebase/firestore";
 
 
 
-const Form = () => {
+const Form = ({setId}) => {
   
     const [dataForm, setDataForm] = useState({
         name: '',
@@ -26,6 +26,7 @@ const Form = () => {
 
 
   const { cartList, emptyCart, totalPrice } = useCartContext();
+  
   const createOrder= () =>{
   const order ={}
   order.buyer = dataForm
@@ -37,7 +38,7 @@ const Form = () => {
   const queryCollection = collection(db, 'orders')
   
   addDoc(queryCollection, order)
-  .then(resp => alert(`Muchas gracias por su compra su orden es : ${resp.id}`) )
+  .then(resp => setId(resp.id) )
   .catch( err =>console.log(err))
   .finally(() =>{
     emptyCart(),
@@ -86,7 +87,7 @@ const Form = () => {
   <label ><b>Validar email</b></label>
   <input type="text" placeholder="Validar email" onChange={handleOnChange}  name="emailRepeat"  id="emailRepeat" required />
   {error &&<div>{error}</div>}
-  <button > Continuar </button>
+  <button > Crear orden</button>
 </form>
 
 </div>
