@@ -16,17 +16,28 @@ const CartContainer = () => {
     height: "5rem",
     marginLeft: "15%",
   };
-
   const [id, setId]= useState('')
 
-  if(id !== ''){
-    return(
-      <div>Muchas gracias por su compra su orden es: {id}</div>
-     
-    )
+  const [conti, setConti] = useState(false);
+
+ const proceedToCheckOut = () => {
+    setConti((current) => !current);
   }
 
-  else if (cartList.length === 0) {
+
+ if(conti===true){
+  if(id!==''){
+    return <h2>Gracias por su compra. El numero de orden es {id}</h2>
+  }
+  
+  return <><Form setId={setId}/>
+  
+  </>
+
+ }
+
+
+  else if (cartList.length ===0) {
     return (
       <>
         <h2>El carrito de compras esta vacio</h2>
@@ -34,12 +45,12 @@ const CartContainer = () => {
           <Link to="/">
             <button>Volver al inicio</button>
           </Link>
-        </div>
+        </div>  
       </>
     );
   }
   return (
-    <div>
+    <div >
       <div className="title">Shopping Bag </div>
       {cartList.map((Products) => (
         <label key={Products.id}>
@@ -84,13 +95,19 @@ const CartContainer = () => {
         <button>Volver al inicio</button>
       </Link>
       $ {totalPrice()} USD
-      <button>Continuar</button>
-      
-      <Form setId={setId}/>
-     
-    </div>
+    
+      <button onClick={proceedToCheckOut}>Continuar</button>
+    
+   </div>
   );
-};
+}
+
+  
+  
+
+
+
+
 
 
 export default CartContainer;
