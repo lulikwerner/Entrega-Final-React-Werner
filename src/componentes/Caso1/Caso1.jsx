@@ -1,5 +1,5 @@
 import { useState } from "react"
-
+import { updateDoc,doc,  getFirestore } from "firebase/firestore";
 const options =[
     {value:1, text:"Oro Amarillo"},
     {value:2, text:"Oro Rosado"},
@@ -7,7 +7,7 @@ const options =[
 ]
 
 //Pasar el Select a OTRO CONTENEDOR
-const Select = ({options, optionSelected, option}) =>{
+const Select = ({options, optionSelected}) =>{
 return(
     <select
     onChange={(evet) => optionSelected(Number(evet.target.value))}>
@@ -19,13 +19,25 @@ return(
 
     </select>
 )
+
+}
+console.log(options)    
+
+const updateOrder =() =>{
+const db =getFirestore()
+const queryDoc = doc(db, 'products', '6PIZIy6WpQxvmjj3vB3p')
+updateDoc(queryDoc, {image:{option}})
+.then(()=> console.log('producto actualizado'))
 }
 export default function Caso1(){
     const[option, setOptions]=useState(1)
 
     function optionSelected(value){
         setOptions(value)
+        
     }
+  
+    
     return(
         <>
 
@@ -42,10 +54,11 @@ export default function Caso1(){
         options ={options}
         optionSelected = {optionSelected}
         option = {option}
+        
         />
-
+        <h2>{option}</h2>
         </>
     );
+    updateOrder()
 }
-
 

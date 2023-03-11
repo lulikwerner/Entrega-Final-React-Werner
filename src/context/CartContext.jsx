@@ -1,9 +1,12 @@
 import { createContext, useContext, useState } from "react";
-const CartContext = createContext([]);
-export const useCartContext = () => useContext(CartContext);
-export const CartContextProvider = ({ children }) => {
-const [cartList, setCartList] = useState([]);
 
+const CartContext = createContext([]);
+
+export const useCartContext = () => useContext(CartContext);
+
+export const CartContextProvider = ({ children }) => {
+  
+  const [cartList, setCartList] = useState([]);
   const addToCart = (Product) => {
     const aux = cartList.findIndex((x) => x.id === Product.id);
     if (aux != -1) {
@@ -30,6 +33,16 @@ const [cartList, setCartList] = useState([]);
   const emptyCart = () => {
     setCartList([]);
   };
+
+  //ver idOrder
+  const idOrder = () => {
+    return cartList.map((e) => e.id);
+  };
+//ver qtyOrder
+  const qtyOrder = () => {
+    return cartList.map((ep) => ep.qty);
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -39,6 +52,8 @@ const [cartList, setCartList] = useState([]);
         totalQty,
         totalPrice,
         deleteProduct,
+        idOrder,
+        qtyOrder,
       }}
     >
       {children}

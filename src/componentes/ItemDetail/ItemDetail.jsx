@@ -25,7 +25,6 @@ const ItemDetail = ({itemDet}) => {
     });
   function onAdd (qty)  {
     console.log(`Compraste ${qty} item`);
-    console.log(itemDet)
     
     addToCart({...itemDet,qty})
     setPurchase(true)
@@ -33,8 +32,8 @@ const ItemDetail = ({itemDet}) => {
     successToast()
   };
 
-
-  const styleI ={
+const [id, setId]= useState('')
+const styleI ={
     width:' 16rem',
     height:'15rem',
     marginLeft: '15%'
@@ -51,7 +50,7 @@ const styleD ={
        <ToastContainer transition={Zoom} toastStyle={{ backgroundColor: "#f4fdff", color: "#44dee3"}}/>
 
        {options ===false  && <Card.Img style ={styleI} variant="top" src={image} />}
-       {options ===true  && <Caso1 />}
+       {options ===true  && <Caso1 setId={setId}/>}
   
       <Card.Body>
         <Card.Title>{model}</Card.Title>

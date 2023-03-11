@@ -1,22 +1,23 @@
+import { Link } from "react-router-dom";
 
-import { Link} from "react-router-dom";
+const optionButtons = [
+  { name: "Checkout", route: "/carrito" },
+  { name: "Seguir Comprando", route: "/" },
+];
 
-
-
-const Options= () =>{
-
-    return(
-        <>
-        <Link to ='/carrito'>
-            <button className="btn btn-outline-primary"
-            onClick={()=>console.log('Cart')}>Checkout</button>
+const Options = () => {
+  return (
+    <>
+      {optionButtons.map((opt) => (
+        <Link to={opt.route}>
+          <button
+            className="btn btn-outline-primary"
+          >
+            {opt.name}
+          </button>
         </Link>
-        <Link to='/'>
-        <button className="btn btn-outline-primary"
-           onClick={()=>console.log('Home')}>Seguir Comprando</button>
-        </Link>
-        </>
-    )
-
-}
-export default Options
+      ))}
+    </>
+  );
+};
+export default Options;

@@ -101,12 +101,6 @@
     border: none;
     cursor: pointer;
   }
-  .minus-btn img {
-    margin-bottom: 3px;
-  }
-  .plus-btn img {
-    margin-top: 2px;
-  }
    
   button:focus,
   input:focus {
@@ -148,19 +142,6 @@ input {
   background-color: rgb(225, 225, 225);
   border-radius: 0.25em;
   color: black;
-}
-buttonR {
-  padding: 0.75em;
-  border: none;
-  outline: none;
-  background-color: rgb(68, 18, 232);
-  color: white;
-  border-radius: 0.25em;
-}
-
-buttonR:hover {
-  cursor: pointer;
-  background-color: rgb(41, 4, 164);
 }
 
 .likeBtn {

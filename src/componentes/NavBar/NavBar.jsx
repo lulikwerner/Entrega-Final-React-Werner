@@ -21,9 +21,8 @@ function NavBar(){
           >
 
             <NavLink  className={({isActive})=>isActive ?'Activo':'NoActivo'} to = 'categoria/Relojes' >Relojes</NavLink>
-
             <NavDropdown className={({isActive})=>isActive ?'Activo':'NoActivo'} title="Joyas" id="navbarScrollingDropdown">
-            
+              
               <NavDropdown.Item  className={({isActive})=>isActive ?'Activo':'NoActivo'} as={Link}  to = 'categoria/Anillos'>Anillos
                 </NavDropdown.Item>
                 <NavDropdown.Item  as={Link}  to = 'categoria/Collares'>
