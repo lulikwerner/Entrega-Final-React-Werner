@@ -10,7 +10,7 @@ export const CartContextProvider = ({ children }) => {
   const addToCart = (Product) => {
     const aux = cartList.findIndex((x) => x.id === Product.id);
     if (aux != -1) {
-      cartList[aux].qty += Product.qty;
+      cartList[aux].qty += Product.qty; 
       setCartList([...cartList]);
       return;
     } else {
@@ -34,15 +34,6 @@ export const CartContextProvider = ({ children }) => {
     setCartList([]);
   };
 
-  //ver idOrder
-  const idOrder = () => {
-    newId= cartList.map((e) => e.id);
-    return newId
-  };
-//ver qtyOrder
-  const qtyOrder = () => {
-    return cartList.map((ep) => ep.qty);
-  };
 
   return (
     <CartContext.Provider
@@ -53,8 +44,6 @@ export const CartContextProvider = ({ children }) => {
         totalQty,
         totalPrice,
         deleteProduct,
-        idOrder,
-        qtyOrder,
       }}
     >
       {children}

@@ -28,7 +28,6 @@ const CartContainer = () => {
   async function updateStock(cartList) {
     const db = getFirestore();
     const productsCollection = collection(db, 'products');
-
     for (const item of cartList) {
         const productRef = doc(productsCollection, item.id);
         const productDoc = await getDoc(productRef);

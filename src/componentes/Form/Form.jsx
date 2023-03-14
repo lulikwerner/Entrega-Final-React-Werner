@@ -76,7 +76,7 @@ const Form = ({ setId }) => {
           onChange={handleOnChange}
           name="name"
           id="name"
-          require
+          required
         />
         <label>
           <b>Telefono</b>
@@ -87,7 +87,7 @@ const Form = ({ setId }) => {
           onChange={handleOnChange}
           name="phone"
           id="phone"
-          require
+          required
         />
         <label>
           <b>Email</b>

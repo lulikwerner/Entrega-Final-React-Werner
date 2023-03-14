@@ -8,8 +8,8 @@ const optionButtons = [
 const Options = () => {
   return (
     <>
-      {optionButtons.map((opt) => (
-        <Link to={opt.route}>
+      {optionButtons.map((opt, index) => (
+        <Link key={index} to={opt.route}>
           <button
             className="btn btn-outline-primary"
           >
