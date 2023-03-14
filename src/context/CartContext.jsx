@@ -36,7 +36,8 @@ export const CartContextProvider = ({ children }) => {
 
   //ver idOrder
   const idOrder = () => {
-    return cartList.map((e) => e.id);
+    newId= cartList.map((e) => e.id);
+    return newId
   };
 //ver qtyOrder
   const qtyOrder = () => {

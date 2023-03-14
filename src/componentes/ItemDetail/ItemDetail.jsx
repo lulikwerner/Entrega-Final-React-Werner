@@ -25,6 +25,7 @@ const ItemDetail = ({itemDet}) => {
     });
   function onAdd (qty)  {
     console.log(`Compraste ${qty} item`);
+
     
     addToCart({...itemDet,qty})
     setPurchase(true)

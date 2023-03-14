@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import HeartWidget from "../Widget/Widget";
 import Form from "../Form/Form";
-import { updateDoc,doc,  getFirestore, where,collection } from "firebase/firestore";
+import { getFirestore, collection, getDoc, updateDoc, doc, } from "firebase/firestore";
 
 const CartContainer = () => {
   const [active, setAct] = useState({});
   const toggleActive = (ProductsId) => () =>
     setAct({ ...active, [ProductsId]: !active[ProductsId] });
 
-  const { cartList, emptyCart, deleteProduct, totalPrice, idOrder, qtyOrder} = useCartContext();
+  const { cartList, emptyCart, deleteProduct, totalPrice} = useCartContext();
   const styleI = {
     width: " 5rem",
     height: "5rem",
@@ -21,29 +21,31 @@ const CartContainer = () => {
   const [conti, setConti] = useState(false);
   const proceedToCheckOut = () => {
     setConti((current) => !current);
+    
   } 
 
-  //onst [ido,setIdo] = useState('');
-    
-//const idoo=setIdo(idOrder())
+  //Hace el update del stock en Firebase
+  async function updateStock(cartList) {
+    const db = getFirestore();
+    const productsCollection = collection(db, 'products');
 
-
-
-cartList.forEach((e)=>console.log(e.id, e.qty)
-
+    for (const item of cartList) {
+        const productRef = doc(productsCollection, item.id);
+        const productDoc = await getDoc(productRef);
+        const stock = productDoc.data().quantity;
+        const newStock = stock - item.qty;
+        await updateDoc(productRef, { quantity: newStock });
+        if (newStock==0){
+          await updateDoc(productRef, { active: false });
+        }
+    }
   
-    /*const updateStock =() =>{
-   // setIdo(updateOrder())
-    const db =getFirestore()
-  const queryCollection= collection(db, 'products')
-    const queryDoc = doc(queryCollection, where("id", "==",e.id))
-    
-    updateDoc(queryDoc, {stock:10})
-    .then(()=> console.log('producto actualizado'))
-    }*/)
+  }
+  
 
  if(conti===true){
-  //updateStock()
+  updateStock(cartList)
+
   if(id!==''){
     return <h2>Gracias por su compra. El numero de orden es {id}</h2>
   }
