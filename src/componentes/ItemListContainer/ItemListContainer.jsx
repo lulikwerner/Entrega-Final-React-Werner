@@ -1,14 +1,9 @@
-import {
-  getFirestore,
-  collection,
-  getDocs,
-  query,
-  where,
-} from "firebase/firestore";
-import { React, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import ItemList from "../ItemList/ItemList";
 import Spinner from "../Spinner/Spinner";
+import {getFirestore, collection, getDocs, query, where,} from "firebase/firestore";
+import { React, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
 
 export const ItemListContainer = ({ Greeting }) => {
   const styles = {
@@ -20,6 +15,8 @@ export const ItemListContainer = ({ Greeting }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const { idCategoria } = useParams();
+
+
 
   useEffect(() => {
     setLoading(true);
@@ -36,8 +33,13 @@ export const ItemListContainer = ({ Greeting }) => {
         )
       )
       .catch((err) => console.error(err))
-      .finally(() => setLoading(false));
+      .finally(() => {
+        setTimeout(() => setLoading(false), 2000);
+      });
   }, [idCategoria]);
+
+
+
 
   return (
     <>

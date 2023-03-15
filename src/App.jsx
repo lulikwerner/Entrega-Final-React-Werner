@@ -8,7 +8,6 @@ import CartContainer from "./componentes/CartContainer/CartContainer";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-
 function App() {
   return (
     <BrowserRouter>
@@ -18,13 +17,13 @@ function App() {
           <Route
             path="/"
             element={
-              <ItemListContainer Greeting="Bienvenido a la Nueva tienda Online" />
+              <ItemListContainer Greeting="Bienvenido a Nuestra tienda Online" />
             }
           />
           <Route
             path="/categoria/:idCategoria"
             element={
-              <ItemListContainer Greeting="Bienvenido a la Nueva tienda Online" />
+              <ItemListContainer Greeting="Bienvenido a Nuestra tienda Online" />
             }
           />
           <Route path="/detalle/:idProduct" element={<ItemDetailContainer />} />

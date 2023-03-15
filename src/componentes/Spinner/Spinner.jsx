@@ -1,5 +1,5 @@
 import { FlapperSpinner } from "react-spinners-kit";
-import React from "react";
+
 
 const Spinner = () => {
   const styles = {

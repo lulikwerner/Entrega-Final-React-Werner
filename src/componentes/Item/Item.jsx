@@ -1,7 +1,7 @@
+import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import { React } from "react";
 import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
 
 function Item({ prod }) {
   const { id, category, brand, model, price, quantity, image } = prod;
@@ -19,6 +19,18 @@ function Item({ prod }) {
     width: " 16rem",
     height: "15rem",
   };
+  const styleB = {
+    marginTop: "5px",
+    width: "60%",
+    height: " 40px",
+    border: "none",
+    background: "linear-gradient(to bottom right, #4bd4d7, #79ddd9)",
+    borderRadius: "20px",
+    cursor: "pointer",
+    fontSize: "16px",
+    color: "white",
+  };
+
   return (
     <Card style={styles}>
       <Card.Img variant="top" style={styleI} src={image} />
@@ -33,7 +45,9 @@ function Item({ prod }) {
           Cantidad: {quantity}
         </Card.Text>
         <Link to={`/detalle/${id}`}>
-          <Button variant="primary">Ver Detalles</Button>
+          <Button style={styleB} className="btn-sty">
+            Ver Detalles
+          </Button>
         </Link>
       </Card.Body>
     </Card>

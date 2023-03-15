@@ -1,3 +1,4 @@
+import "../ItemCount/ItemCount.css";
 import React, { useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -8,7 +9,6 @@ const ItemCount = ({ initial, stock, onAdd }) => {
       setCount(count - 1);
     }
   };
-
   const add = () => {
     if (count < stock) {
       setCount(count + 1);
@@ -16,26 +16,28 @@ const ItemCount = ({ initial, stock, onAdd }) => {
   };
 
   return (
-    <>
-      <div>
-        <button className="btn btn-dark" onClick={substract}>
+    <div>
+      <br></br>
+      <div className="counter">
+        <div className="btn-con" onClick={substract}>
           -
-        </button>
-
-        <span className="btn ">{count}</span>
-        <button className="btn btn-dark" onClick={add}>
+        </div>
+        <div className="count">{count}</div>
+        <div className="btn-con" onClick={add}>
           +
-        </button>
-        <br></br>
-        <button
-          onClick={() => {
-            onAdd(count);
-          }}
-        >
-          Comprar
-        </button>
+        </div>
       </div>
-    </>
+      <br></br>
+      <button
+        className="btn-sty"
+        onClick={() => {
+          onAdd(count);
+        }}
+      >
+        {" "}
+        Comprar{" "}
+      </button>
+    </div>
   );
 };
 

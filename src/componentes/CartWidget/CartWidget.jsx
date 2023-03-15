@@ -1,6 +1,7 @@
 import React from "react";
-import { HiOutlineShoppingBag } from "react-icons/hi";
 import { useCartContext } from "../../context/CartContext";
+import { HiOutlineShoppingBag } from "react-icons/hi";
+
 
 function CartWidget() {
   const styles = {
@@ -19,6 +20,7 @@ function CartWidget() {
     background: "none",
     top: "10%",
     left: "50%",
+    cursor: "pointer",
   };
   const { totalQty } = useCartContext();
   return (

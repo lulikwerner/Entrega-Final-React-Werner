@@ -1,34 +1,34 @@
-.navbar-brand{
-    padding-left: 3%;
+.navbar-brand {
+  padding-left: 3%;
 }
 
-.Activo{
-    text-underline-position: under;
-    text-decoration: none;
-     margin-top:6%; 
-     color: hotpink!important;
-    
+.Activo {
+  text-underline-position: under;
+  text-decoration: none;
+  margin-top: 6%;
+  color: hotpink !important;
 }
-.Activo a{
-   
-    text-decoration: none;
-     margin-top:6%; 
-     color: hotpink !important;
-     
+.Activo a {
+  text-decoration: none;
+  margin-top: 6%;
+  color: hotpink !important;
 }
-a:hover{
-    color: hotpink !important;  
+a:hover {
+  color: hotpink !important;
 }
-.dropdown-menu{
-    --bs-dropdown-link-active-bg: none !important;
+.dropdown-menu {
+  --bs-dropdown-link-active-bg: none !important;
 }
-.dropdown-item:focus, .dropdown-item:hover {
-    background-color: white !important;
+.dropdown-item:focus,
+.dropdown-item:hover {
+  background-color: white !important;
 }
 
-.NoActivo{
-    color: black !important; 
-    margin-top:6%;
-    font-weight: 400;
+.NoActivo {
+  color: black !important;
+  margin-top: 6%;
+  font-weight: 400;
 }
-
+.bag {
+  cursor: pointer;
+}

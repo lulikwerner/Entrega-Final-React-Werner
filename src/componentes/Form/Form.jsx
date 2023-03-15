@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useCartContext } from "../../context/CartContext";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 import "../CartContainer/CartContainer.css";
+import "../Form/Form.css";
+
 
 const Form = ({ setId }) => {
   const [dataForm, setDataForm] = useState({
@@ -46,12 +49,6 @@ const Form = ({ setId }) => {
 
   //Valida que sea el mismo email
   const [error, setError] = useState("");
-  const formData = [
-    { name: "Usuario", placeholder: "Ingresar el nombre", namen: "name", id: "name", },
-    { name: "Telefono", placeholder: "Ingresar telefono", namen: "phone", id: "phone" },
-    { name: "Email", placeholder: " email", namen: "Ingresar email", id: "email"},
-    { name: "Validar email", placeholder: "Validar email", namen: "emailRepeat", id: "emailRepeat" },
-  ];
 
   const handleSubmit = (eve) => {
     eve.preventDefault();
@@ -112,8 +109,13 @@ const Form = ({ setId }) => {
           required
         />
         {error && <div>{error}</div>}
-        <button> Crear orden</button>
+        <button className="create"> Crear orden</button>
       </form>
+      <Link to="/">
+        <div className="text-muted">
+          <span className="back-to-shop2"> &#8592; Volver al inicio</span>
+        </div>
+      </Link>
     </div>
   );
 };

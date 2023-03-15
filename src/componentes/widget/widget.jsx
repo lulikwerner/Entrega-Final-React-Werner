@@ -1,5 +1,5 @@
 import { HiHeart } from "react-icons/hi";
-import React from "react";
+
 
 function HeartWidget() {
   const styles = {
@@ -13,4 +13,3 @@ function HeartWidget() {
   );
 }
 export default HeartWidget;
-HiHeart;

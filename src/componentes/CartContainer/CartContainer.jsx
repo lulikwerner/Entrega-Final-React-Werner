@@ -1,79 +1,92 @@
+import Form from "../Form/Form";
+import HeartWidget from "../Widget/Widget";
 import { useCartContext } from "../../context/CartContext";
-import "../CartContainer/CartContainer.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import HeartWidget from "../Widget/Widget";
-import Form from "../Form/Form";
-import { getFirestore, collection, getDoc, updateDoc, doc, } from "firebase/firestore";
+import { getFirestore, collection, getDoc, updateDoc, doc,} from "firebase/firestore";
+import { HiOutlineTrash } from "react-icons/hi";
+import "../CartContainer/CartContainer.css";
+
 
 const CartContainer = () => {
   const [active, setAct] = useState({});
   const toggleActive = (ProductsId) => () =>
     setAct({ ...active, [ProductsId]: !active[ProductsId] });
 
-  const { cartList, emptyCart, deleteProduct, totalPrice} = useCartContext();
+  const { cartList, emptyCart, deleteProduct, totalPrice } = useCartContext();
   const styleI = {
     width: " 5rem",
     height: "5rem",
     marginLeft: "15%",
   };
-  const [id, setId]= useState('')
+  const [id, setId] = useState("");
   const [conti, setConti] = useState(false);
   const proceedToCheckOut = () => {
     setConti((current) => !current);
-    
-  } 
+  };
 
   //Hace el update del stock en Firebase
   async function updateStock(cartList) {
     const db = getFirestore();
-    const productsCollection = collection(db, 'products');
+    const productsCollection = collection(db, "products");
     for (const item of cartList) {
-        const productRef = doc(productsCollection, item.id);
-        const productDoc = await getDoc(productRef);
-        const stock = productDoc.data().quantity;
-        const newStock = stock - item.qty;
-        await updateDoc(productRef, { quantity: newStock });
-        if (newStock==0){
-          await updateDoc(productRef, { active: false });
-        }
+      const productRef = doc(productsCollection, item.id);
+      const productDoc = await getDoc(productRef);
+      const stock = productDoc.data().quantity;
+      const newStock = stock - item.qty;
+      await updateDoc(productRef, { quantity: newStock });
+      if (newStock == 0) {
+        await updateDoc(productRef, { active: false });
+      }
     }
-  
   }
-  
 
- if(conti===true){
-  updateStock(cartList)
-
-  if(id!==''){
-    return <h2>Gracias por su compra. El numero de orden es {id}</h2>
-  }
-  return <Form setId={setId}/>
- }
-  else if (cartList.length ===0) {
+  //Si el cliente da continuar se hace el update del stock en firebase
+  if (conti === true) {
+    updateStock(cartList);
+    if (id !== "") {
+      return (
+        <>
+          <h2>Gracias por su compra.</h2>
+          <h3> El numero de orden es: </h3>
+          <h4>{id}</h4>
+        </>
+      );
+    }
+    return <Form setId={setId} />;
+  } else if (cartList.length === 0) {
     return (
       <>
         <h2>El carrito de compras esta vacio</h2>
         <div>
           <Link to="/">
-            <button>Volver al inicio</button>
+            <div className="text-muted">
+              <span className="back-to-shop2"> &#8592; Volver al inicio</span>
+            </div>
           </Link>
-        </div>  
+        </div>
       </>
     );
   }
   return (
-    <div >
+    <div className="cart">
       <div className="title">Shopping Bag </div>
+      <div className="empty-cart" onClick={emptyCart}>
+        {" "}
+        <HiOutlineTrash /> Vaciar{" "}
+      </div>
       {cartList.map((Products) => (
         <label key={Products.id}>
           <div className="shopping-cart">
             <div className="item">
               <div className="buttons">
-                <span className="deleteBtn"
+                <span
+                  className="deleteBtn"
                   style={{ fontSize: 21 }}
-                  onClick={() => deleteProduct(Products.id)}>
-                  {" "} x
+                  onClick={() => deleteProduct(Products.id)}
+                >
+                  {" "}
+                  x
                 </span>
                 <div key={Products.id}>
                   <span
@@ -101,15 +114,23 @@ const CartContainer = () => {
         </label>
       ))}
       <br></br>
-      <button className="Empty" onClick={emptyCart}>
-        Vaciar Carrito
+      <div>
+        <Link to="/">
+          <div className="text-muted">
+            <span className="back-to-shop"> &#8592; Volver al inicio</span>
+          </div>
+        </Link>
+        <div className="total">
+          <label class="text-muted font-weight-normal m-0">Precio Total</label>
+          <div class="text-large">
+            <strong>$ {totalPrice()} USD</strong>
+          </div>
+        </div>
+      </div>
+      <button className="conti" onClick={proceedToCheckOut}>
+        Continuar
       </button>
-      <Link to="/">
-        <button>Volver al inicio</button>
-      </Link>
-      $ {totalPrice()} USD
-      <button onClick={proceedToCheckOut}>Continuar</button>
-   </div>
+    </div>
   );
-}
+};
 export default CartContainer;
